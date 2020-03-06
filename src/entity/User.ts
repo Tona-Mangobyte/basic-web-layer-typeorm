@@ -1,10 +1,8 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, Column} from "typeorm";
+import {AbstractNormalEntity} from "./AbstractNormalEntity";
 
 @Entity()
-export class User {
-
-    @PrimaryGeneratedColumn()
-    id: number;
+export class User extends AbstractNormalEntity {
 
     @Column()
     firstName: string;
