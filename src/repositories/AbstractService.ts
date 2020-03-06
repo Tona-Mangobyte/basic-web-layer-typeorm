@@ -1,12 +1,11 @@
 import {AbstractNormalEntity} from "../entity/AbstractNormalEntity";
 import {AbstractEntity} from "../entity/AbstractEntity";
 import {QueryPage} from "../query/QueryPage";
-import {QueryInterface} from "./core/QueryInterface";
-import {CrudInterface} from "./core/CrudInterface";
 import {DeleteResult, FindConditions, FindOneOptions, ObjectID} from "typeorm";
 import {BaseRepository} from "./BaseRepository";
+import {ServiceInterface} from "./ServiceInterface";
 
-export abstract class AbstractService<Entity extends AbstractNormalEntity | AbstractEntity, EntityQuery extends QueryPage> implements QueryInterface<Entity, EntityQuery>, CrudInterface<Entity> {
+export abstract class AbstractService<Entity extends AbstractNormalEntity | AbstractEntity, EntityQuery extends QueryPage> implements ServiceInterface<Entity, EntityQuery> {
     public abstract getRepository(): BaseRepository<Entity, EntityQuery>;
 
     public paginate(options: EntityQuery, req?: any, qOptions: any = {}): Promise<any> {
